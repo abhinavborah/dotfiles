@@ -2,4 +2,4 @@
 
 Notes:
 
-- [Karabiner Elements](./notes/karabiner.md)
+- [Karabiner-Elements](./notes/karabiner.md)

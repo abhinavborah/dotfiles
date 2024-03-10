@@ -4,3 +4,4 @@ Notes:
 
 - [Karabiner-Elements](./notes/karabiner.md)
 - [Alacritty](./notes/alacritty.md)
+- [tmux](./notes/tmux.md)

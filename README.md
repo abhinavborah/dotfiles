@@ -1,5 +1,16 @@
 # Dotfiles for the tools I use daily
 
+## Alacritty
+
+Features:
+
+- simple and usable config
+- gruvbox dark theme
+
+Prerequisite:
+
+- Meslo Nerd Font [here](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo)
+
 ## Karabiner-Elements
 
 - hyper : shift + command + option + control
@@ -21,17 +32,6 @@ Features:
   - hyper + o + f : Firefox
   - hyper + o + m : Music
   - hyper + o + w : WhatsApp
-
-## Alacritty
-
-Features:
-
-- simple and usable config
-- gruvbox dark theme
-
-Prerequisite:
-
-- Meslo Nerd Font [here](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo)
 
 ## tmux
 

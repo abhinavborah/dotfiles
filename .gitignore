@@ -1,0 +1,12 @@
+htop
+iterm2
+linearmouse
+neofetch
+nvim
+nvim.bak
+qBittorrent
+
+# Karabiner Elements
+karabiner.bak
+karabiner/assets
+karabiner/automatic_backups

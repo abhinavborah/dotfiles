@@ -3,6 +3,8 @@
 These files control the behavior of my applications from boot to termination and everything in between.
 This repository aims at providing an easy remote access to all my tailored config files.
 
+![preview](./preview.png)
+
 ## Prerequisite
 
 > For package management on macOS I prefer [Homebrew](https://github.com/Homebrew/brew). Not a necessity, just my preference.

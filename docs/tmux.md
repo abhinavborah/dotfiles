@@ -8,7 +8,7 @@ It lets you switch easily between several programs in one terminal, detach them 
 - tmux kill-session -t {session_name}
   - kills the specific session
 
-> I have an alias set in my .zshrc to kill all the tmux instances:
+> I have an alias set in my .zshrc to kill all the tmux instances
 
 ```
 alias tkill="tmux ls | awk '{print $1}'|sed 's/.$//'| xargs -t -n1 tmux kill-session -t"

@@ -1,42 +1,30 @@
 # Dotfiles for the tools I use daily
 
-## Alacritty
+These files control the behavior of my applications from boot to termination and everything in between.
+This repository aims at providing an easy remote access to all my tailored config files.
 
-Features:
+## Prerequisite
 
-- simple and usable config
-- gruvbox dark theme
+> For package management on macOS I prefer [Homebrew](https://github.com/Homebrew/brew). Not a necessity, just my preference.
+>
+> ```
+> brew install --cask alacritty karabiner-elements tmux
+> ```
 
-Prerequisite:
+Application specific prerequisites:
 
-- Meslo Nerd Font [here](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo)
+### alacritty
 
-## Karabiner-Elements
+Download the [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo) for extra icons and symbols.
 
-- hyper : shift + command + option + control
-
-Features:
-
-- CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL) or ESCAPE (If Alone)
-- Toggle caps_lock by pressing left_shift then right_shift
-- Shifts Move Forward and Backward by 1 word
-- Hyper + i/j/k/l == vim directional Keys
-- Open Screenshot.app with Print_Screen Key
-- Open terminal (mine set to alacritty) with Hyper + Return Key
-- modding delete_forward key (wip)
-- modding pause key (wip)
-- o Launcher: (example config)
-  - hyper + o + a : Arc
-  - hyper + o + d : Discord
-  - hyper + o + e : Finder
-  - hyper + o + f : Firefox
-  - hyper + o + m : Music
-  - hyper + o + w : WhatsApp
-
-## tmux
-
-Prerequisite:
+### tmux
 
 ```
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
+
+## Stuck somewhere?
+
+> RTFM (Read The Friendly Manual) :)
+
+For each application I have provided their respective markdown files in the [docs](./docs/)

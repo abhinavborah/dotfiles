@@ -11,8 +11,6 @@ This repository aims at providing an easy remote access to all my tailored confi
 > brew install --cask alacritty karabiner-elements tmux
 > ```
 
-Application specific prerequisites:
-
 ### alacritty
 
 Download the [Meslo Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo) for extra icons and symbols.

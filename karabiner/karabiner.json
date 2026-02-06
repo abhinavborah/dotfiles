@@ -1,497 +1,588 @@
 {
-    "global": { "check_for_updates_on_startup": false },
-    "profiles": [
-        {
-            "name": "Default profile",
-            "virtual_hid_keyboard": { "country_code": 0 }
-        },
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL) or ESCAPE (If Alone)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": {}
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": ["left_command", "left_control", "left_option"]
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "escape" }],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+,",
-                                "from": {
-                                    "key_code": "comma",
-                                    "modifiers": { "mandatory": ["command", "shift", "option", "control"] }
-                                },
-                                "to": [],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+.",
-                                "from": {
-                                    "key_code": "period",
-                                    "modifiers": { "mandatory": ["command", "shift", "option", "control"] }
-                                },
-                                "to": [],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+/",
-                                    "key_code": "slash",
-                                    "modifiers": { "mandatory": ["command", "shift", "option", "control"] }
-                                },
-                                "to": [],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Toggle caps_lock by pressing left_shift then right_shift",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_shift",
-                                    "modifiers": {
-                                        "mandatory": ["right_shift"],
-                                        "optional": ["caps_lock"]
-                                    }
-                                },
-                                "to": [{ "key_code": "caps_lock" }],
-                                "to_if_alone": [{ "key_code": "left_shift" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "right_shift",
-                                    "modifiers": {
-                                        "mandatory": ["left_shift"],
-                                        "optional": ["caps_lock"]
-                                    }
-                                },
-                                "to": [{ "key_code": "caps_lock" }],
-                                "to_if_alone": [{ "key_code": "right_shift" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper + i/j/k/l == vim directional Keys",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] }
-                                },
-                                "to": [{ "key_code": "up_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] }
-                                },
-                                "to": [{ "key_code": "left_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] }
-                                },
-                                "to": [{ "key_code": "down_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] }
-                                },
-                                "to": [{ "key_code": "right_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "semicolon",
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Open Screenshot.app with Print_Screen key",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "print_screen" },
-                                "to": [{ "shell_command": "open -a screenshot.app" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Open terminal with Hyper + Return key",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "return_or_enter",
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] }
-                                },
-                                "to": [{ "shell_command": "open -a Alacritty.app" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "[borah] modding delete_forward key",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "delete_forward" },
-                                "to": [{ "shell_command": "afplay ~/other/audio/huh-sound-effect.notwav" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "description": "do stuff",
-                                    "key_code": "delete_forward",
-                                    "modifiers": { "mandatory": ["left_shift"] }
-                                },
-                                "to": [{ "shell_command": "" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "[borah] modding pause key",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "description": "play audio",
-                                    "key_code": "pause"
-                                },
-                                "to": [{ "shell_command": "afplay ~/other/audio/hahaha.notwav" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "description": "do stuff",
-                                    "key_code": "pause",
-                                    "modifiers": { "mandatory": ["left_shift"] }
-                                },
-                                "to": [{ "shell_command": "" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "o Launcher [modified]",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "launcher_mode_v4",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": { "mandatory": [] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Discord.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] },
-                                    "simultaneous": [
-                                        { "key_code": "o" },
-                                        { "key_code": "d" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "key_down_order": "strict",
-                                        "key_up_order": "strict_inverse",
-                                        "to_after_key_up": [
-                                            {
-                                                "set_variable": {
-                                                    "name": "launcher_mode_v4",
-                                                    "value": 0
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 500 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "launcher_mode_v4",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "open -a 'Discord.app'" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "launcher_mode_v4",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": [] }
-                                },
-                                "to": [{ "shell_command": "open -a Firefox.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] },
-                                    "simultaneous": [
-                                        { "key_code": "o" },
-                                        { "key_code": "f" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "key_down_order": "strict",
-                                        "key_up_order": "strict_inverse",
-                                        "to_after_key_up": [
-                                            {
-                                                "set_variable": {
-                                                    "name": "launcher_mode_v4",
-                                                    "value": 0
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 500 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "launcher_mode_v4",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "open -a Firefox.app" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "launcher_mode_v4",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": { "mandatory": [] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Finder.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] },
-                                    "simultaneous": [
-                                        { "key_code": "o" },
-                                        { "key_code": "e" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "key_down_order": "strict",
-                                        "key_up_order": "strict_inverse",
-                                        "to_after_key_up": [
-                                            {
-                                                "set_variable": {
-                                                    "name": "launcher_mode_v4",
-                                                    "value": 0
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 500 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "launcher_mode_v4",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "open -a 'Finder.app'" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "launcher_mode_v4",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": { "mandatory": [] }
-                                },
-                                "to": [{ "shell_command": "open -a Music.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] },
-                                    "simultaneous": [
-                                        { "key_code": "o" },
-                                        { "key_code": "m" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "key_down_order": "strict",
-                                        "key_up_order": "strict_inverse",
-                                        "to_after_key_up": [
-                                            {
-                                                "set_variable": {
-                                                    "name": "launcher_mode_v4",
-                                                    "value": 0
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 500 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "launcher_mode_v4",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "open -a Music.app" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "launcher_mode_v4",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "a",
-                                    "modifiers": { "mandatory": [] }
-                                },
-                                "to": [{ "shell_command": "open -a Arc.app" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] },
-                                    "simultaneous": [
-                                        { "key_code": "o" },
-                                        { "key_code": "a" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "key_down_order": "strict",
-                                        "key_up_order": "strict_inverse",
-                                        "to_after_key_up": [
-                                            {
-                                                "set_variable": {
-                                                    "name": "launcher_mode_v4",
-                                                    "value": 0
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 500 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "launcher_mode_v4",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "open -a Arc.app" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "launcher_mode_v4",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": { "mandatory": [] }
-                                },
-                                "to": [{ "shell_command": "open -a 'WhatsApp.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "modifiers": { "mandatory": ["left_shift", "left_command", "left_control", "left_option"] },
-                                    "simultaneous": [
-                                        { "key_code": "o" },
-                                        { "key_code": "w" }
-                                    ],
-                                    "simultaneous_options": {
-                                        "key_down_order": "strict",
-                                        "key_up_order": "strict_inverse",
-                                        "to_after_key_up": [
-                                            {
-                                                "set_variable": {
-                                                    "name": "launcher_mode_v4",
-                                                    "value": 0
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 500 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "launcher_mode_v4",
-                                            "value": 1
-                                        }
-                                    },
-                                    { "shell_command": "open -a 'WhatsApp.app'" }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
+  "global": { "check_for_updates_on_startup": false },
+  "profiles": [
+    {
+      "name": "Default profile",
+      "virtual_hid_keyboard": { "country_code": 0 }
+    },
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL) or ESCAPE (If Alone)",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {}
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift",
+                    "modifiers": ["left_command", "left_control", "left_option"]
+                  }
+                ],
+                "to_if_alone": [{ "key_code": "escape" }],
+                "type": "basic"
+              },
+              {
+                "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+,",
+                "from": {
+                  "key_code": "comma",
+                  "modifiers": {
+                    "mandatory": ["command", "shift", "option", "control"]
+                  }
+                },
+                "to": [],
+                "type": "basic"
+              },
+              {
+                "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+.",
+                "from": {
+                  "key_code": "period",
+                  "modifiers": {
+                    "mandatory": ["command", "shift", "option", "control"]
+                  }
+                },
+                "to": [],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+/",
+                  "key_code": "slash",
+                  "modifiers": {
+                    "mandatory": ["command", "shift", "option", "control"]
+                  }
+                },
+                "to": [],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Toggle caps_lock by pressing left_shift then right_shift",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "mandatory": ["right_shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [{ "key_code": "caps_lock" }],
+                "to_if_alone": [{ "key_code": "left_shift" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "mandatory": ["left_shift"],
+                    "optional": ["caps_lock"]
+                  }
+                },
+                "to": [{ "key_code": "caps_lock" }],
+                "to_if_alone": [{ "key_code": "right_shift" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Hyper + i/j/k/l == vim directional Keys",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [{ "key_code": "up_arrow" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [{ "key_code": "left_arrow" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [{ "key_code": "down_arrow" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [{ "key_code": "right_arrow" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "semicolon",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow",
+                    "modifiers": ["left_command"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Open Screenshot.app with Print_Screen key",
+            "manipulators": [
+              {
+                "from": { "key_code": "print_screen" },
+                "to": [{ "shell_command": "open -a screenshot.app" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Open terminal with Hyper + Return key",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "return_or_enter",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                },
+                "to": [{ "shell_command": "open -a Kitty.app" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "[borah] modding delete_forward key",
+            "manipulators": [
+              {
+                "from": { "key_code": "delete_forward" },
+                "to": [
+                  {
+                    "shell_command": "afplay ~/other/audio/huh-sound-effect.notwav"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "description": "do stuff",
+                  "key_code": "delete_forward",
+                  "modifiers": { "mandatory": ["left_shift"] }
+                },
+                "to": [{ "shell_command": "" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "[borah] modding pause key",
+            "manipulators": [
+              {
+                "from": {
+                  "description": "play audio",
+                  "key_code": "pause"
+                },
+                "to": [
+                  { "shell_command": "afplay ~/other/audio/hahaha.notwav" }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "description": "do stuff",
+                  "key_code": "pause",
+                  "modifiers": { "mandatory": ["left_shift"] }
+                },
+                "to": [{ "shell_command": "" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "o Launcher [modified]",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "name": "launcher_mode_v4",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "d",
+                  "modifiers": { "mandatory": [] }
+                },
+                "to": [{ "shell_command": "open -a 'Discord.app'" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  },
+                  "simultaneous": [{ "key_code": "o" }, { "key_code": "d" }],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "launcher_mode_v4",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launcher_mode_v4",
+                      "value": 1
                     }
-                ]
-            },
-            "name": "productivity",
-            "selected": true,
-            "virtual_hid_keyboard": {
-                "country_code": 0,
-                "keyboard_type_v2": "ansi"
-            }
-        }
-    ]
+                  },
+                  { "shell_command": "open -a 'Discord.app'" }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "launcher_mode_v4",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "f",
+                  "modifiers": { "mandatory": [] }
+                },
+                "to": [{ "shell_command": "open -a Firefox.app" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  },
+                  "simultaneous": [{ "key_code": "o" }, { "key_code": "f" }],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "launcher_mode_v4",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launcher_mode_v4",
+                      "value": 1
+                    }
+                  },
+                  { "shell_command": "open -a Firefox.app" }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "launcher_mode_v4",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "e",
+                  "modifiers": { "mandatory": [] }
+                },
+                "to": [{ "shell_command": "open -a 'Finder.app'" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  },
+                  "simultaneous": [{ "key_code": "o" }, { "key_code": "e" }],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "launcher_mode_v4",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launcher_mode_v4",
+                      "value": 1
+                    }
+                  },
+                  { "shell_command": "open -a 'Finder.app'" }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "launcher_mode_v4",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "m",
+                  "modifiers": { "mandatory": [] }
+                },
+                "to": [{ "shell_command": "open -a Music.app" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  },
+                  "simultaneous": [{ "key_code": "o" }, { "key_code": "m" }],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "launcher_mode_v4",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launcher_mode_v4",
+                      "value": 1
+                    }
+                  },
+                  { "shell_command": "open -a Music.app" }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "launcher_mode_v4",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "a",
+                  "modifiers": { "mandatory": [] }
+                },
+                "to": [{ "shell_command": "open -a Arc.app" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  },
+                  "simultaneous": [{ "key_code": "o" }, { "key_code": "a" }],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "launcher_mode_v4",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launcher_mode_v4",
+                      "value": 1
+                    }
+                  },
+                  { "shell_command": "open -a Arc.app" }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "launcher_mode_v4",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "w",
+                  "modifiers": { "mandatory": [] }
+                },
+                "to": [{ "shell_command": "open -a 'WhatsApp.app'" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_shift",
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
+                  },
+                  "simultaneous": [{ "key_code": "o" }, { "key_code": "w" }],
+                  "simultaneous_options": {
+                    "key_down_order": "strict",
+                    "key_up_order": "strict_inverse",
+                    "to_after_key_up": [
+                      {
+                        "set_variable": {
+                          "name": "launcher_mode_v4",
+                          "value": 0
+                        }
+                      }
+                    ]
+                  }
+                },
+                "parameters": {
+                  "basic.simultaneous_threshold_milliseconds": 500
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launcher_mode_v4",
+                      "value": 1
+                    }
+                  },
+                  { "shell_command": "open -a 'WhatsApp.app'" }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "productivity",
+      "selected": true,
+      "virtual_hid_keyboard": {
+        "country_code": 0,
+        "keyboard_type_v2": "ansi"
+      }
+    }
+  ]
 }
+

@@ -89,13 +89,13 @@ padding_x = -1                         # -1 = auto based on font size
 padding_y = -1                         # -1 = auto based on font size
 border_width = 1
 background_color_light = "#F200CFCF"
-background_color_dark = "#F2D79921"
+background_color_dark = "#F2FABD2F"
 text_color_light = "#FF003554"
-text_color_dark = "#FFEABD2F"
+text_color_dark = "#FF282828"
 matched_text_color_light = "#FFAAEEFF"
 matched_text_color_dark = "#FF003554"
 border_color_light = "#FF008A8A"
-border_color_dark = "#FFFABD2F"
+border_color_dark = "#FFD79921"
 
 # Grid mode
 # See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#grid-mode
@@ -129,13 +129,13 @@ border_width = 1
 background_color_light = "#9900B4D8"
 background_color_dark = "#4DD79921"
 text_color_light = "#FF003554"
-text_color_dark = "#77EABD2F"
+text_color_dark = "#77FABD2F"
 matched_text_color_light = "#FFAAEEFF"
 matched_text_color_dark = "#FFEABD2F"
 matched_background_color_light = "#B300CFCF"
 matched_background_color_dark = "#B3D79921"
 matched_border_color_light = "#B300CFCF"
-matched_border_color_dark = "#B300B4D8"
+matched_border_color_dark = "#B3FABD2F"
 border_color_light = "#9900B4D8"
 border_color_dark = "#77FABD2F"
 
@@ -238,11 +238,11 @@ text = "Recursive Grid"
 font_size = 10
 font_family = ""
 background_color_light = "#F200CFCF"
-background_color_dark = "#F200CFCF"
+background_color_dark = "#F2FABD2F"
 text_color_light = "#FF003554"
-text_color_dark = "#FF003554"
+text_color_dark = "#FF282828"
 border_color_light = "#FF007A9E"
-border_color_dark = "#FF007A9E"
+border_color_dark = "#FFD79921"
 border_width = 1
 padding_x = -1
 padding_y = -1

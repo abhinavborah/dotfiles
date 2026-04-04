@@ -101,12 +101,12 @@ border_color_dark = "#FFD79921"
 # See https://github.com/y3owk1n/neru/blob/main/docs/CONFIGURATION.md#grid-mode
 [grid]
 enabled = true
-characters = "abcdefghijklmnpqrstuvwxyz"    # Primary grid labels
-sublayer_keys = "abcdefghijklmnpqrstuvwxyz" # Subgrid labels (fallback to characters)
-live_match_update = true                    # Highlight cells as you type
-hide_unmatched = true                       # Hide non-matching cells
-prewarm_enabled = true                      # Pre-compute grid on startup (~1.5MB RAM)
-enable_gc = false                           # Periodic memory cleanup (adds CPU overhead)
+characters = "asdfghjkl"    # Primary grid labels
+sublayer_keys = "asdfghjkl" # Subgrid labels (fallback to characters)
+live_match_update = true    # Highlight cells as you type
+hide_unmatched = true       # Hide non-matching cells
+prewarm_enabled = true      # Pre-compute grid on startup (~1.5MB RAM)
+enable_gc = false           # Periodic memory cleanup (adds CPU overhead)
 
 [grid.hotkeys]
 "Escape" = "idle"

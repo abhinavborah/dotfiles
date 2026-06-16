@@ -1,0 +1,63 @@
+# Gruvbox Dark Theme for Ghostty
+# Based on https://github.com/morhetz/gruvbox
+# Retro groove color scheme with warm, muted tones
+
+# Background and foreground
+background = #282828
+foreground = #ebdbb2
+
+# Enable palette generation for extended colors (16-255)
+# This creates a cohesive look from just the 16 base colors
+palette-generate = true
+
+# Black (0) and Bright Black (8)
+palette = 0 = #282828
+palette = 8 = #7c6f64
+
+# Red (1) and Bright Red (9)
+palette = 1 = #cc241d
+palette = 9 = #fb4934
+
+# Green (2) and Bright Green (10)
+palette = 2 = #98971a
+palette = 10 = #b8bb26
+
+# Yellow (3) and Bright Yellow (11)
+palette = 3 = #d79921
+palette = 11 = #fabd2f
+
+# Blue (4) and Bright Blue (12)
+palette = 4 = #458588
+palette = 12 = #83a598
+
+# Magenta (5) and Bright Magenta (13)
+palette = 5 = #b16286
+palette = 13 = #d3869b
+
+# Cyan (6) and Bright Cyan (14)
+palette = 6 = #689d6a
+palette = 14 = #8ec07c
+
+# White (7) and Bright White (15)
+palette = 7 = #a89984
+palette = 15 = #fbf1c7
+
+# Cursor colors - warm orange to match theme
+cursor-color = #fb4934
+cursor-text = #282828
+
+# Selection colors
+selected-text-background = #b16286
+selected-text-foreground = #282828
+
+# Scrollbar colors
+scrollbar-color = #7c6f64
+
+# Search highlight colors
+search-box-no-match = #cc241d
+search-box-match = #fabd2f
+
+# Font configuration (optional - Ghostty has good defaults)
+# Uncomment and modify to your preference:
+# font-family = JetBrains Mono
+# font-size = 13

@@ -1,0 +1,32 @@
+onboarding = false
+[theme]
+name = "gruvbox"
+auto_switch = false
+
+[ui.toast]
+delivery = "system"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+[experimental]
+pane_history = true
+
+[keys]
+# prefix: was tmux C-a
+prefix = "ctrl+a"
+
+# pane focus: prefix+hjkl (herdr default) + macOS-safe prefix-free chord
+# replaces vim-tmux-navigator ctrl+hjkl (seamless vim handoff not portable)
+focus_pane_left  = ["prefix+h", "ctrl+alt+h"]
+focus_pane_down  = ["prefix+j", "ctrl+alt+j"]
+focus_pane_up    = ["prefix+k", "ctrl+alt+k"]
+focus_pane_right = ["prefix+l", "ctrl+alt+l"]
+
+# unchanged from herdr defaults (documented for the tmux migrant):
+#   split right  (tmux %)  -> prefix+v
+#   split down   (tmux ")  -> prefix+minus
+#   resize pane  (tmux prefix+hjkl) -> prefix+r, then hjkl
+#   copy mode + vim v/y select -> prefix+[  (native, no config)
+# dropped (native in herdr): resurrect/continuum persistence, base-index,
+#   renumber-windows, status-position, mouse (all default/managed).
